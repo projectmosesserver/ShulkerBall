@@ -1,0 +1,20 @@
+
+Items:
+  - Test
+  - ShulkerBall
+
+Test:
+  Name: テストアイテム
+  Lore:
+    - 説明
+  Glow: true
+  Material: OAK_LOG
+
+ShulkerBall:
+  Name: §6しゅるか～ぼ～る
+  Lore:
+    - §aシュルカーをこのアイテムをもって右クリックすることで捕まえられて
+    - §a入っている状態（見た目がエンチャントされている）ときに
+    - §a好きな場所に右クリックすることで召喚できます！
+  Glow: false
+  Material: BOWL

@@ -1,0 +1,4 @@
+name: ShulkerBall
+version: '${project.version}'
+main: info.ahaha.shulkerball.ShulkerBall
+api-version: 1.17

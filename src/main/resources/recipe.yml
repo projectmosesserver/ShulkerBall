@@ -1,0 +1,44 @@
+#
+#     RecipeType : CRAFT | FURNACE
+#
+#
+#     CRAFT --------------------------------------------------
+#
+#     First : 作業台の上の段のアイテム
+#     Second : 作業台の真ん中の段のアイテム
+#     Third : 作業台の下の段のアイテム
+#
+#     ※　もしもアイテムを必要しないマスがある場合はスペースを挟んでください
+#          例　:  "D D"
+#     --------------------------------------------------------
+#
+#     FURNACE ------------------------------------------------
+#
+#     EXP : かまどで焼き終わったあとに手に入る経験値量
+#     Time : かまどで焼きあがるのにかかる時間（ｎ秒）
+#
+#     --------------------------------------------------------
+#
+#     Type : Material | Item
+#     Item :
+#       Material ... アイテムＩＤ(大文字)　例　棒...(STICK)
+#       Item ...  items.ymlで作ったアイテムのＩＤ　例  DiamondSword
+#
+
+ShulkerBall:
+  RecipeType: CRAFT
+  First: "   "
+  Second: "D D"
+  Third: " D "
+  D:
+    Type: Item
+    Item: Test
+
+Test:
+  RecipeType: CRAFT
+  First: "OOO"
+  Second: "OOO"
+  Third: "OOO"
+  O:
+    Type: Material
+    Item: OAK_LOG
