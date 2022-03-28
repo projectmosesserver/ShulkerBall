@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Shulker;
@@ -41,7 +42,6 @@ public final class ShulkerBall extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
-        if (e.getAction() != Action.RIGHT_CLICK_AIR) return;
         if (e.getHand() != EquipmentSlot.HAND) return;
         Player player = e.getPlayer();
         ItemStack hand = player.getInventory().getItemInMainHand();
@@ -50,11 +50,19 @@ public final class ShulkerBall extends JavaPlugin implements Listener {
         if (!hand.getItemMeta().getLore().get(0).equalsIgnoreCase(getShulkerBall().getItemMeta().getLore().get(0)))
             return;
         if (hand.getEnchantments().isEmpty()) return;
-        Location location = player.getLocation().clone();
-        location.add(player.getLocation().getDirection());
-        location.getWorld().spawn(location, Shulker.class);
-        player.sendMessage(ChatColor.GOLD+"[ ShulkerBall ] "+ChatColor.GREEN+"シュルカーを召喚しました！");
-        hand.setAmount(hand.getAmount() - 1);
+        if (e.getAction() == Action.RIGHT_CLICK_AIR) {
+            Location location = player.getLocation().clone();
+            location.add(player.getLocation().getDirection());
+            location.getWorld().spawn(location, Shulker.class);
+            player.sendMessage(ChatColor.GOLD + "[ ShulkerBall ] " + ChatColor.GREEN + "シュルカーを召喚しました！");
+            hand.setAmount(hand.getAmount() - 1);
+        }else if (e.getAction() == Action.RIGHT_CLICK_BLOCK){
+            if (e.getClickedBlock() == null)return;
+            Location location = e.getClickedBlock().getRelative(BlockFace.UP).getLocation().clone();
+            location.getWorld().spawn(location, Shulker.class);
+            player.sendMessage(ChatColor.GOLD + "[ ShulkerBall ] " + ChatColor.GREEN + "シュルカーを召喚しました！");
+            hand.setAmount(hand.getAmount() - 1);
+        }
     }
 
     @EventHandler
